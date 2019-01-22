@@ -1,6 +1,7 @@
 package novak.project
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 
@@ -13,7 +14,10 @@ class MainActivity : Activity() {
 
 
     fun onClickGallery(v: View) {
-        setContentView(R.layout.activity_gallery)
+        val intent = Intent(this, GalleryActivity::class.java).apply {
+
+        }
+        startActivity(intent)
     }
 
 }

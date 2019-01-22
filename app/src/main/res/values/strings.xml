@@ -2,4 +2,5 @@
     <string name="app_name">HVLProject</string>
     <string name="gallery">Gallery</string>
     <string name="photo">Photo of a person!</string>
+    <string name="delete">Delete person!</string>
 </resources>
