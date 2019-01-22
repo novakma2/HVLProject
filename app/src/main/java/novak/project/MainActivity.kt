@@ -2,6 +2,7 @@ package novak.project
 
 import android.app.Activity
 import android.os.Bundle
+import android.view.View
 
 class MainActivity : Activity() {
 
@@ -9,4 +10,10 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+
+
+    fun onClickGallery(v: View) {
+        setContentView(R.layout.activity_gallery)
+    }
+
 }
