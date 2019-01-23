@@ -4,8 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import novak.project.model.Person
 
 class MainActivity : Activity() {
+    var persons: Array<Person> = arrayOf(Person())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
