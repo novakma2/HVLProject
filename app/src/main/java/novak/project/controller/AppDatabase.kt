@@ -1,7 +1,7 @@
 package novak.project.controller
 
-import androidx.room.Database
-import androidx.room.RoomDatabase
+import android.arch.persistence.room.Database
+import android.arch.persistence.room.RoomDatabase
 import novak.project.model.Person
 
 @Database(entities = arrayOf(Person::class), version = 1)

@@ -1,7 +1,7 @@
 package novak.project.controller
 
-import androidx.room.*
-import androidx.room.Dao
+import android.arch.persistence.room.*
+import android.arch.persistence.room.Dao
 import novak.project.model.Person
 
 @Dao
