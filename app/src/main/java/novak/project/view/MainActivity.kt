@@ -1,13 +1,12 @@
-package novak.project
+package novak.project.view
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import novak.project.model.Person
+import novak.project.R
 
 class MainActivity : Activity() {
-    var persons: Array<Person> = arrayOf(Person())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

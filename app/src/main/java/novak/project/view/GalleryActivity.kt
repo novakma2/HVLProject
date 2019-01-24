@@ -1,9 +1,10 @@
-package novak.project
+package novak.project.view
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import novak.project.R
 
 class GalleryActivity : Activity() {
 
