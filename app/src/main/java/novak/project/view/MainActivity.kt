@@ -13,7 +13,7 @@ import novak.project.controller.AsyncTasks.*
 
 class MainActivity : Activity() {
 
-    companion object DatabaseSetup {
+    companion object dbSetup {
         var db: AppDatabase? = null
     }
 
@@ -23,11 +23,12 @@ class MainActivity : Activity() {
             applicationContext,
             AppDatabase::class.java, "db"
         ).build()
-        var persons: Array<Person> = arrayOf(Person(0, "Marta", "Novak"), Person(0, "Peter"))
+        var persons: Array<Person> = arrayOf(Person(null, "Marta", "Novak"), Person(null, "Peter"))
         val clearPersons = clearPersons(this)
         val setPersons = setPersons(this,persons)
         clearPersons.execute()
         setPersons.execute()
+        val finalPersons = getPersons(this)
         setContentView(R.layout.activity_main)
     }
 

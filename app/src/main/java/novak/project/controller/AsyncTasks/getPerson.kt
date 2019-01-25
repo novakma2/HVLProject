@@ -6,6 +6,12 @@ import novak.project.controller.Dao
 import novak.project.model.Person
 import novak.project.view.MainActivity
 
+/**
+ * getting Person of its id saved in database
+ * @param weakActivity you will mostly pass "this"
+ * @param i uid of person in database
+ * @return person of type Person with uid = i
+ */
 class getPerson(private val weakActivity: Activity, val i: Int) : AsyncTask<Void, Void, Person>() {
 
     override fun doInBackground(vararg params: Void?): Person? {
