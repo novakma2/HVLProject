@@ -13,8 +13,6 @@ class GalleryActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gallery)
-        val persons: Array<Person> = intent.extras.get("DB") as Array<Person>
-        Toast.makeText(this, persons.get(0).surname, Toast.LENGTH_LONG).show()
 
     }
     fun onClickBack(v: View) {

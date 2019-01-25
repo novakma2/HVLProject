@@ -38,4 +38,10 @@ interface Dao {
     @Insert(onConflict = OnConflictStrategy.FAIL)
     fun init(persons: Array<Person>)
 
+    /**
+     * @return Returns count of persons in database
+     */
+    @Query("SELECT COUNT(*) FROM persons")
+    fun countPersons(): Int
+
 }
