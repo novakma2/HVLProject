@@ -7,15 +7,15 @@ import novak.project.model.Person
 import novak.project.view.MainActivity
 
 /**
- * Used to init database ONLY FOR TESTING!
+ * addPerson adds person of Person type to database
  * @param weakActivity you will mostly pass "this"
- * @param persons Array of Person to put into database
+ * @param person person of Person type which you want to add to database
  */
-class setPersons(private val weakActivity: Activity, val persons: Array<Person>) : AsyncTask<Void, Array<Person>, Void>() {
+class addPerson(private val weakActivity: Activity, val person: Person) : AsyncTask<Void, Void, Void>() {
 
     override fun doInBackground(vararg params: Void?): Void? {
         val dao: Dao = MainActivity.db!!.personsDao()
-        dao.init(persons)
+        dao.addPerson(this.person)
         return null
     }
 }

@@ -3,19 +3,18 @@ package novak.project.controller.AsyncTasks
 import android.app.Activity
 import android.os.AsyncTask
 import novak.project.controller.Dao
-import novak.project.model.Person
 import novak.project.view.MainActivity
 
+
 /**
- * Used to init database ONLY FOR TESTING!
+ * Removes all persons in database FOR TESTING ONLY! to keep persistence
  * @param weakActivity you will mostly pass "this"
- * @param persons Array of Person to put into database
  */
-class setPersons(private val weakActivity: Activity, val persons: Array<Person>) : AsyncTask<Void, Array<Person>, Void>() {
+class clearPersons(private val weakActivity: Activity) : AsyncTask<Void, Void, Void>() {
 
     override fun doInBackground(vararg params: Void?): Void? {
         val dao: Dao = MainActivity.db!!.personsDao()
-        dao.init(persons)
+        dao.clearTable()
         return null
     }
 }

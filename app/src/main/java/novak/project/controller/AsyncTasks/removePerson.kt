@@ -7,15 +7,15 @@ import novak.project.model.Person
 import novak.project.view.MainActivity
 
 /**
- * Used to init database ONLY FOR TESTING!
+ * removePerson removes person from database
  * @param weakActivity you will mostly pass "this"
- * @param persons Array of Person to put into database
+ * @param person passing Person object which you want to remoce from database
  */
-class setPersons(private val weakActivity: Activity, val persons: Array<Person>) : AsyncTask<Void, Array<Person>, Void>() {
+class removePerson(private val weakActivity: Activity, val person: Person) : AsyncTask<Void, Void, Void>() {
 
     override fun doInBackground(vararg params: Void?): Void? {
         val dao: Dao = MainActivity.db!!.personsDao()
-        dao.init(persons)
+        dao.deletePerson(this.person)
         return null
     }
 }

@@ -44,4 +44,10 @@ interface Dao {
     @Query("SELECT COUNT(*) FROM persons")
     fun countPersons(): Int
 
+    /**
+     * Deletes whole database
+     */
+    @Query("DELETE FROM persons WHERE (name=name)")
+    fun clearTable()
+
 }
