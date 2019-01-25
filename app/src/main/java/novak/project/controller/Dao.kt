@@ -2,6 +2,7 @@ package novak.project.controller
 
 import android.arch.persistence.room.*
 import android.arch.persistence.room.Dao
+import android.util.Log
 import novak.project.model.Person
 
 @Dao
@@ -16,7 +17,7 @@ interface Dao {
      * @param id ID of person in database
      * @return Returns person of given id
      */
-    @Query("SELECT * FROM persons WHERE uid=:id")
+    @Query("SELECT * FROM persons WHERE uid=:id LIMIT 1")
     fun getPerson(id: Int): Person
 
     /**

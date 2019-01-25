@@ -9,9 +9,12 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".view.AddActivity">
+        </activity>
         <activity android:name=".view.GalleryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.GET_CONTENT"/>
+
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>

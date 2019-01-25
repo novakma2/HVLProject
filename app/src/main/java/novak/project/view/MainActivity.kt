@@ -25,9 +25,10 @@ class MainActivity : Activity() {
             AppDatabase::class.java, "db"
         ).build()
         setContentView(R.layout.activity_main)
+        clearPersons(this).execute().get()
         var persons: Array<Person> = arrayOf(Person(null, "Marta", "Novak"), Person(null, "Peter"))
-        val clearPersons = clearPersons(this).execute()
-        val setPersons = setPersons(this,persons).execute()
+        setPersons(this,persons).execute()
+
     }
 
 
