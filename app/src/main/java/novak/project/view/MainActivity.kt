@@ -4,6 +4,7 @@ import android.app.Activity
 import android.arch.persistence.room.Room
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import novak.project.R
@@ -23,13 +24,10 @@ class MainActivity : Activity() {
             applicationContext,
             AppDatabase::class.java, "db"
         ).build()
-        var persons: Array<Person> = arrayOf(Person(null, "Marta", "Novak"), Person(null, "Peter"))
-        val clearPersons = clearPersons(this)
-        val setPersons = setPersons(this,persons)
-        clearPersons.execute()
-        setPersons.execute()
-        val finalPersons = getPersons(this)
         setContentView(R.layout.activity_main)
+        var persons: Array<Person> = arrayOf(Person(null, "Marta", "Novak"), Person(null, "Peter"))
+        val clearPersons = clearPersons(this).execute()
+        val setPersons = setPersons(this,persons).execute()
     }
 
 
