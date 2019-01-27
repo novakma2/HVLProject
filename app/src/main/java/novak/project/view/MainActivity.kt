@@ -24,11 +24,18 @@ class MainActivity : Activity() {
             applicationContext,
             AppDatabase::class.java, "db"
         ).build()
+        clearPersons(this).execute()
         setContentView(R.layout.activity_main)
     }
 
 
     fun onClickGallery(v: View) {
+        val intent = Intent(this, GalleryActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun onClickQuiz(v: View) {
+        //TODO Write quiz class
         val intent = Intent(this, GalleryActivity::class.java)
         startActivity(intent)
     }

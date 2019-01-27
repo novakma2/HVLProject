@@ -7,4 +7,5 @@
     <string name="putSurname">Surname</string>
     <string name="photoPerson">Photo of a Person</string>
     <string name="Close">Close</string>
+    <string name="Quiz">Quiz</string>
 </resources>

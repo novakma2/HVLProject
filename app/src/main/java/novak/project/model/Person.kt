@@ -12,5 +12,5 @@ data class Person(
     @PrimaryKey(autoGenerate = true) val uid: Int?,
     @ColumnInfo(name = "name") val name: String = "John",
     @ColumnInfo(name = "surname") val surname: String = "Doe",
-    @ColumnInfo(name = "img") var picture: Int = 0
+    @ColumnInfo(name = "img") var picture: String = "drawable/photoofperson.jpg"
 )

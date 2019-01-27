@@ -28,7 +28,7 @@ class AddActivity : Activity() {
     }
 
     fun onClickAdd(v: View){
-        val person = Person(null,editName.text.toString(),editSurname.text.toString(),0)
+        val person = Person(null,editName.text.toString(),editSurname.text.toString())
         addPerson(this,person).execute()
         Toast.makeText(this,"Person added",Toast.LENGTH_SHORT).show()
         val intent = Intent(this,GalleryActivity::class.java).apply {
