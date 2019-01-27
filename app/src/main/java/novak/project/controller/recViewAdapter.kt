@@ -22,7 +22,7 @@ class recViewAdapter(var persons: Array<Person>, val context: Context) : Adapter
         val person: Person = this.persons[i]
         customViewHolder.name.text = person.name
         customViewHolder.surname.text = person.surname
-        customViewHolder.image.setImageBitmap(BitmapFactory.decodeFile(person.picture.toString()))
+        customViewHolder.image.setImageBitmap(BitmapFactory.decodeFile(person.picture))
     }
 
     override fun getItemCount(): Int {
