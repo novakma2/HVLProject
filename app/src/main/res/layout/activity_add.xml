@@ -22,6 +22,7 @@
         android:id="@+id/imgPerson"
         android:layout_width="0dp"
         android:layout_height="416dp"
+        android:contentDescription="@string/photoPerson"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,9 +37,12 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
+        android:autofillHints="Name"
         android:ems="10"
+        android:fontFamily="@font/roboto"
         android:hint="@string/putName"
-        android:inputType="textPersonName"
+        android:inputType="text"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgPerson" />
@@ -51,35 +55,39 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
+        android:autofillHints="Surname"
         android:ems="10"
+        android:fontFamily="@font/roboto"
         android:hint="@string/putSurname"
-        android:inputType="textPersonName"
+        android:inputType="text"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editName" />
-
-    <ImageButton
-        android:id="@+id/btnAdd"
-        style="@android:style/Widget.Material.Light.ImageButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/primaryTextColor"
-        android:elevation="8dp"
-        android:src="@drawable/ic_check_black_24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageButton
         android:id="@+id/btnClose"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/primaryColor"
+        android:contentDescription="@string/Close"
         android:onClick="onClickBack"
         android:src="@drawable/ic_close_white_24dp"
         app:layout_constraintBottom_toTopOf="@+id/imgPerson"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:onClick="onClickAdd"
+        android:src="@drawable/ic_check_white_24dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

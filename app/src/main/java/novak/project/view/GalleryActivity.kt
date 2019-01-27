@@ -18,14 +18,24 @@ class GalleryActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gallery)
+        //val array: Array<Person> = getPersons(this).execute().get()
+        //val llm = LinearLayoutManager(this)
+        //val recyclerView= findViewById<RecyclerView>(R.id.recycler)
+        //recyclerView.layoutManager = llm
+        //recyclerView.adapter = recViewAdapter(array,this)
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         val array: Array<Person> = getPersons(this).execute().get()
         val llm = LinearLayoutManager(this)
         val recyclerView= findViewById<RecyclerView>(R.id.recycler)
         recyclerView.layoutManager = llm
         recyclerView.adapter = recViewAdapter(array,this)
-
-
     }
+
     fun onClickBack(v: View) {
         val intent = Intent(this, MainActivity::class.java).apply {
         }

@@ -5,4 +5,6 @@
     <string name="delete">Delete person!</string>
     <string name="putName">Name</string>
     <string name="putSurname">Surname</string>
+    <string name="photoPerson">Photo of a Person</string>
+    <string name="Close">Close</string>
 </resources>
