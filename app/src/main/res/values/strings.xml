@@ -3,4 +3,6 @@
     <string name="gallery">Gallery</string>
     <string name="photo">Photo of a person!</string>
     <string name="delete">Delete person!</string>
+    <string name="putName">Name</string>
+    <string name="putSurname">Surname</string>
 </resources>

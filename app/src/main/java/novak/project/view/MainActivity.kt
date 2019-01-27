@@ -25,7 +25,7 @@ class MainActivity : Activity() {
             AppDatabase::class.java, "db"
         ).build()
         setContentView(R.layout.activity_main)
-        clearPersons(this).execute().get()
+        clearPersons(this).execute()
         var persons: Array<Person> = arrayOf(Person(null, "Marta", "Novak"), Person(null, "Peter"))
         setPersons(this,persons).execute()
 
@@ -33,9 +33,6 @@ class MainActivity : Activity() {
 
 
     fun onClickGallery(v: View) {
-        val getPersons = getPersons(this)
-        val finalPersons: Array<Person> = getPersons.execute().get()
-        Toast.makeText(this,finalPersons.get(0).name,Toast.LENGTH_LONG)
         val intent = Intent(this, GalleryActivity::class.java)
         startActivity(intent)
     }
