@@ -8,7 +8,7 @@ import android.arch.persistence.room.PrimaryKey
  *  Passing Int to @param uid will rewrite Person with that uid ! Pass only null to add Person
  */
 @Entity(tableName = "persons")
-data class Person(
+public data class Person(
     @PrimaryKey(autoGenerate = true) val uid: Int?,
     @ColumnInfo(name = "name") val name: String = "John",
     @ColumnInfo(name = "surname") val surname: String = "Doe",

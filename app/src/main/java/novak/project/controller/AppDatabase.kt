@@ -11,3 +11,4 @@ import novak.project.model.Person
 abstract class AppDatabase : RoomDatabase() {
     abstract fun personsDao(): Dao
 }
+

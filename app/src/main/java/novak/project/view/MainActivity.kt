@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_add.*
 import novak.project.R
 import novak.project.controller.AppDatabase
 import novak.project.model.Person
@@ -18,6 +19,7 @@ class MainActivity : Activity() {
         var db: AppDatabase? = null
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         db = Room.databaseBuilder(
@@ -26,6 +28,13 @@ class MainActivity : Activity() {
         ).build()
         clearPersons(this).execute()
         setContentView(R.layout.activity_main)
+
+        val stefan = Person(null,"Stefan","Pankowiecki","R.drawable.stefan")
+        val florian = Person(null,"Florian","Langele","R.drawable.florian")
+        val martin = Person(null,"Martin","Novak","R.drawable.martin")
+        addPerson(this,stefan).execute()
+        addPerson(this,florian).execute()
+        addPerson(this,martin).execute()
     }
 
 
@@ -34,10 +43,13 @@ class MainActivity : Activity() {
         startActivity(intent)
     }
 
+
     fun onClickQuiz(v: View) {
+
         //TODO Write quiz class
-        val intent = Intent(this, GalleryActivity::class.java)
+        val intent = Intent(this, QuizzActivity::class.java)
         startActivity(intent)
+
     }
 
 }

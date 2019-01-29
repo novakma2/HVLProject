@@ -11,6 +11,8 @@
             android:theme="@style/AppTheme">
         <activity android:name=".view.AddActivity">
         </activity>
+        <activity android:name=".view.QuizzActivity">
+        </activity>
         <activity android:name=".view.GalleryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.GET_CONTENT"/>
