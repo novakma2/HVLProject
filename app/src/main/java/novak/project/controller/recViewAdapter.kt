@@ -20,6 +20,8 @@ class recViewAdapter(var persons: Array<Person>, val context: Context) : Adapter
 
     override fun onBindViewHolder(customViewHolder: CustomViewHolder, i: Int) {
         val person: Person = this.persons[i]
+         v
+
         customViewHolder.name.text = person.name
         customViewHolder.surname.text = person.surname
         customViewHolder.image.setImageDrawable(Drawable.createFromPath(person.picture))
