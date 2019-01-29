@@ -13,7 +13,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import kotlinx.android.synthetic.main.card.view.*
-
+import java.io.InputStream
 
 
 class recViewAdapter(var persons: Array<Person>, val context: Context) : Adapter<recViewAdapter.CustomViewHolder>() {
@@ -22,7 +22,7 @@ class recViewAdapter(var persons: Array<Person>, val context: Context) : Adapter
         val person: Person = this.persons[i]
         customViewHolder.name.text = person.name
         customViewHolder.surname.text = person.surname
-        customViewHolder.image.setImageBitmap(BitmapFactory.decodeFile(person.picture))
+        customViewHolder.image.setImageDrawable(Drawable.createFromPath(person.picture))
     }
 
     override fun getItemCount(): Int {
