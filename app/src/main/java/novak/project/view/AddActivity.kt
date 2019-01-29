@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_add.*
 import novak.project.controller.AsyncTasks.addPerson
+import novak.project.controller.AsyncTasks.getNextId
 import novak.project.model.Person
 import java.io.File
 import java.io.FileOutputStream
@@ -37,7 +38,7 @@ class AddActivity : Activity() {
 
     fun onClickAdd(v: View){
         if (photo != null){
-            val path: String = saveImage(photo!!)
+            val path: String = saveImage(photo!!,getNextId(this).execute().get())
             val person = Person(null,editName.text.toString(),editSurname.text.toString(),path)
             addPerson(this,person).execute()
             Toast.makeText(this,"Person added",Toast.LENGTH_SHORT).show()
@@ -64,7 +65,7 @@ class AddActivity : Activity() {
     fun saveImage(bitmap: Bitmap, uid: Int): String{
         val contextWrapper: ContextWrapper = ContextWrapper(applicationContext)
         val dir: File = contextWrapper.getDir("photos",Context.MODE_PRIVATE)
-        val path = File(dir, ("$uid.png"))
+        var path = File(dir, ("${uid+1}.png"))
         var fos: FileOutputStream? = null
         try {
             fos = FileOutputStream(path)

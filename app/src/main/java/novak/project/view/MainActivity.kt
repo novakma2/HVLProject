@@ -28,12 +28,12 @@ class MainActivity : Activity() {
         ).build()
         setContentView(R.layout.activity_main)
 
-        val stefan = Person(null,"Stefan","Pankowiecki","R.drawable.stefan")
-        val florian = Person(null,"Florian","Langele","R.drawable.florian")
-        val martin = Person(null,"Martin","Novak","R.drawable.martin")
-        addPerson(this,stefan).execute()
-        addPerson(this,florian).execute()
-        addPerson(this,martin).execute()
+        //val stefan = Person(null,"Stefan","Pankowiecki","R.drawable.stefan")
+        //val florian = Person(null,"Florian","Langele","R.drawable.florian")
+        //val martin = Person(null,"Martin","Novak","R.drawable.martin")
+        //addPerson(this,stefan).execute()
+        //addPerson(this,florian).execute()
+        //addPerson(this,martin).execute()
     }
 
 

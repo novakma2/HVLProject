@@ -1,6 +1,7 @@
 package novak.project.controller
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import android.support.constraint.ConstraintLayout
@@ -13,6 +14,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import kotlinx.android.synthetic.main.card.view.*
+import java.io.File
+import java.io.FileInputStream
 import java.io.InputStream
 
 
@@ -20,11 +23,12 @@ class recViewAdapter(var persons: Array<Person>, val context: Context) : Adapter
 
     override fun onBindViewHolder(customViewHolder: CustomViewHolder, i: Int) {
         val person: Person = this.persons[i]
-         v
+        val path = File(person.picture,person.uid.toString()+".png")
+        val bitmap: Bitmap = BitmapFactory.decodeStream(FileInputStream(path))
 
         customViewHolder.name.text = person.name
         customViewHolder.surname.text = person.surname
-        customViewHolder.image.setImageDrawable(Drawable.createFromPath(person.picture))
+        customViewHolder.image.setImageBitmap(bitmap)
     }
 
     override fun getItemCount(): Int {

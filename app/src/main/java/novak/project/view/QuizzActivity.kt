@@ -1,5 +1,7 @@
 package novak.project.view
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,6 +12,8 @@ import novak.project.controller.AsyncTasks.getPersons
 import novak.project.model.Person
 import android.net.Uri
 import android.widget.*
+import java.io.File
+import java.io.FileInputStream
 
 
 class QuizzActivity : AppCompatActivity() {
@@ -67,27 +71,14 @@ class QuizzActivity : AppCompatActivity() {
 
             val person = array.get(rnds)
 
-            var Image = findViewById(novak.project.R.id.imageView) as ImageView;
+            var image = findViewById(novak.project.R.id.imageView) as ImageView;
+            val path = File(person.picture,person.uid.toString()+".png")
+            val bitmap: Bitmap = BitmapFactory.decodeStream(FileInputStream(path))
+            image.setImageBitmap(bitmap)
             val namelocal = person.name.toLowerCase()
              name = namelocal
-            if (namelocal.equals("martin") ) {
-                Image.setImageDrawable(getResources().getDrawable(R.drawable.martin));
-            }else if(namelocal.equals("stefan")){
-                Image.setImageDrawable(getResources().getDrawable(R.drawable.stefan));
-            }else if(namelocal.equals("florian")){
-                Image.setImageDrawable(getResources().getDrawable(R.drawable.florian));
-            }else{
+
                 //fix if new persons wont work
-
-
-                val uri = Uri.parse(person.picture)
-                Image.setImageURI(uri)
-            }
-
-
-
-
-
     }
 
 

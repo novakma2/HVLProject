@@ -51,7 +51,7 @@ interface Dao {
     @Query("DELETE FROM persons WHERE (name=name)")
     fun clearTable()
 
-    @Query("Select MAX(uid)+1 from persons;")
-    fun getNextId()
+    @Query("Select uid from persons ORDER BY uid DESC LIMIT 1;")
+    fun getNextId():Int
 
 }
