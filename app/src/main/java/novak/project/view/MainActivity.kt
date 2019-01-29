@@ -26,7 +26,6 @@ class MainActivity : Activity() {
             applicationContext,
             AppDatabase::class.java, "db"
         ).build()
-        clearPersons(this).execute()
         setContentView(R.layout.activity_main)
 
         val stefan = Person(null,"Stefan","Pankowiecki","R.drawable.stefan")

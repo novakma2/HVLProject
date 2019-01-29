@@ -34,6 +34,8 @@ class GalleryActivity : Activity() {
         val recyclerView= findViewById<RecyclerView>(R.id.recycler)
         recyclerView.layoutManager = llm
         recyclerView.adapter = recViewAdapter(array,this)
+        val gett : get = get(Person(null))
+        val gettt = (gett.db())
     }
 
     fun onClickBack(v: View) {
