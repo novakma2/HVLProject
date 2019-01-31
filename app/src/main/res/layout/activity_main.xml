@@ -56,5 +56,6 @@
             android:onClick="onClickGallery"
             android:scaleType="center"
             android:src="@drawable/gallery" />
+
     </android.support.v7.widget.CardView>
 </android.support.constraint.ConstraintLayout>
