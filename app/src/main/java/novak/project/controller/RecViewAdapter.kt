@@ -3,23 +3,20 @@ package novak.project.controller
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.drawable.Drawable
-import android.support.constraint.ConstraintLayout
-import android.support.v7.widget.RecyclerView.Adapter
-import android.view.ViewGroup
-import novak.project.model.Person
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.RecyclerView.Adapter
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import kotlinx.android.synthetic.main.card.view.*
+import novak.project.model.Person
 import java.io.File
 import java.io.FileInputStream
-import java.io.InputStream
 
 
-class recViewAdapter(var persons: Array<Person>, val context: Context) : Adapter<recViewAdapter.CustomViewHolder>() {
+class RecViewAdapter(var persons: Array<Person>, val context: Context) : Adapter<RecViewAdapter.CustomViewHolder>() {
 
     override fun onBindViewHolder(customViewHolder: CustomViewHolder, i: Int) {
         val person: Person = this.persons[i]

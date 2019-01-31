@@ -11,6 +11,8 @@ import android.text.InputType
 import android.view.View
 import android.widget.EditText
 import novak.project.controller.AppDatabase
+import novak.project.controller.AsyncTasks.getPersons
+import novak.project.model.Person
 
 
 class MainActivity : Activity() {
@@ -20,6 +22,7 @@ class MainActivity : Activity() {
         var sharedPreferences: SharedPreferences? = null
         const val ownerKey = "novak.project.app.ownerKey"
         var owner: String? = null
+        var persons: Array<Person>? = null
     }
 
 
@@ -29,7 +32,7 @@ class MainActivity : Activity() {
                 applicationContext,
                 AppDatabase::class.java, "db"
         ).build()
-
+        persons = getPersons(this).execute().get()
         setContentView(novak.project.R.layout.activity_main)
         sharedPreferences = this.getSharedPreferences("novak.project.app", Context.MODE_PRIVATE)
         owner = sharedPreferences!!.getString(ownerKey, "")

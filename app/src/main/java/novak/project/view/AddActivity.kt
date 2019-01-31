@@ -13,6 +13,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_add.*
 import novak.project.controller.AsyncTasks.addPerson
 import novak.project.controller.AsyncTasks.getNextId
+import novak.project.controller.AsyncTasks.getPersons
 import novak.project.model.Person
 import java.io.File
 import java.io.FileOutputStream
@@ -42,18 +43,18 @@ class AddActivity : Activity() {
             val person = Person(null,editName.text.toString(),editSurname.text.toString(),path)
             addPerson(this,person).execute()
             Toast.makeText(this,"Person added",Toast.LENGTH_SHORT).show()
-            val intent = Intent(this,GalleryActivity::class.java).apply {
-            }
-            startActivity(intent)
+            MainActivity.persons = getPersons(this).execute().get()
+            finish()
         } else {
             Toast.makeText(this,"No photo added",Toast.LENGTH_SHORT).show()
         }
 
     }
 
+    @Suppress("UNUSED_PARAMETER")
     fun onClickPhoto(v: View){
-        val inte = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(inte, 0)
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(intent, 0)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
