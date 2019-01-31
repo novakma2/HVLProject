@@ -23,7 +23,6 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/photo"
             android:cropToPadding="true"
-            android:scaleType="centerInside"
             CardView:layout_constraintBottom_toBottomOf="parent"
             CardView:layout_constraintStart_toStartOf="parent"
             CardView:layout_constraintTop_toTopOf="parent"

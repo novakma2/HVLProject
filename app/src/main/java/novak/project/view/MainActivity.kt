@@ -27,7 +27,6 @@ class MainActivity : Activity() {
             AppDatabase::class.java, "db"
         ).build()
         setContentView(R.layout.activity_main)
-
         //val stefan = Person(null,"Stefan","Pankowiecki","R.drawable.stefan")
         //val florian = Person(null,"Florian","Langele","R.drawable.florian")
         //val martin = Person(null,"Martin","Novak","R.drawable.martin")
@@ -44,8 +43,6 @@ class MainActivity : Activity() {
 
 
     fun onClickQuiz(v: View) {
-
-        //TODO Write quiz class
         val intent = Intent(this, QuizzActivity::class.java)
         startActivity(intent)
 
