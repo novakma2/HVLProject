@@ -7,6 +7,7 @@ import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.action.ViewActions.typeText
 import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.rule.ActivityTestRule
+import android.widget.TextView
 import junit.framework.Assert.assertEquals
 import novak.project.view.AddActivity
 import novak.project.view.MainActivity
@@ -18,23 +19,28 @@ import org.junit.Rule
 
 class QuizzActivityTest {
 
-     @Rule @JvmField public var activityTestRule = ActivityTestRule(QuizzActivity::class.java)
+    @Rule
+    @JvmField
+    public var activityTestRule = ActivityTestRule(QuizzActivity::class.java)
 
 
-
-            @Test
+    @Test
     fun addition_isCorrect() {
         assertEquals(4, (2 + 2).toLong())
     }
 
     @Test
-    fun scoreIncrement(){
+    fun scoreIncrement() {
 
 
         print(onView(withId(R.id.textView2)).toString())
-        onView(withId(R.id.textView2)).perform(typeText("stefan"))
-        onView(withId(R.id.button)).perform(click())
+        onView(withId(R.id.textView2)).perform(typeText("florian"))
+        Espresso.closeSoftKeyboard()
+        onView(withId(R.id.check)).perform(click())
 
+        val textView: TextView = activityTestRule.activity.findViewById(R.id.score)
+        val text = textView.text
+        assertEquals("Score: 1",text)
 
     }
 }

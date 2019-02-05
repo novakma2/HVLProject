@@ -1,6 +1,7 @@
 package novak.project.view
 
 import android.app.Activity
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.support.v7.app.AppCompatActivity
@@ -17,18 +18,18 @@ import java.io.FileInputStream
 
 class QuizzActivity : Activity() {
     companion object {
-        private var name = "stefan"
-        private var score = 0
-        private var peronsNumber = 0
+         var name = "florian"
+         var score = 0
+         var peronsNumber = 0
     }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(novak.project.R.layout.activity_quizz)
-        nextRandomPerson()
+        //nextRandomPerson()
 
-        val button = findViewById<Button>(novak.project.R.id.button)
+        val button = findViewById<Button>(novak.project.R.id.check)
         val editText = findViewById<EditText>(R.id.textView2)
         val textView = findViewById<TextView>(novak.project.R.id.score)
 
@@ -38,7 +39,7 @@ class QuizzActivity : Activity() {
             if (editText.text.toString().toLowerCase().equals(name.toLowerCase())) {
                 score++
                 textView.text = "Score: $score"
-                nextRandomPerson()
+                //nextRandomPerson()
 
             } else {
                 Toast.makeText(this@QuizzActivity, "Proper name is: $name", Toast.LENGTH_SHORT).show()
@@ -48,7 +49,7 @@ class QuizzActivity : Activity() {
     }
 
 
-    private fun nextRandomPerson() {
+    public fun nextRandomPerson() {
         peronsNumber = getPersonCount(this).execute().get()
         val array = MainActivity.persons
         val rnds = (0..peronsNumber - 1).random()  //make random number
@@ -63,7 +64,9 @@ class QuizzActivity : Activity() {
 
 
     fun finishActivity(v: View) {
-        finish()
+        //finish()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
 
