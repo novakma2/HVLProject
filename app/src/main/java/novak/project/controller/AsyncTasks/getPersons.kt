@@ -2,7 +2,6 @@ package novak.project.controller.AsyncTasks
 
 import android.app.Activity
 import android.os.AsyncTask
-import android.util.Log
 import novak.project.controller.Dao
 import novak.project.model.Person
 import novak.project.view.MainActivity
@@ -16,7 +15,6 @@ class getPersons(private val weakActivity: Activity) : AsyncTask<Void, Void, Arr
 
     override fun doInBackground(vararg params: Void?): Array<Person> {
         val dao: Dao = MainActivity.db!!.personsDao()
-        Log.d("Threat","Kurwa")
         return dao.getPersons()
     }
 }

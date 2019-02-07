@@ -49,8 +49,6 @@ class MainActivity : Activity() {
                     sharedPreferences!!.edit().putString(ownerKey, owner).apply()
                 }
             }
-            builder.setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
-
             builder.show()
 
 

@@ -4,14 +4,11 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.*
 import novak.project.R
 import novak.project.controller.AsyncTasks.getPersonCount
-import novak.project.controller.AsyncTasks.getPersons
-import novak.project.model.Person
-import android.widget.*
 import java.io.File
 import java.io.FileInputStream
 
@@ -49,13 +46,13 @@ class QuizzActivity : Activity() {
     }
 
 
-    public fun nextRandomPerson() {
+    private fun nextRandomPerson() {
         peronsNumber = getPersonCount(this).execute().get()
         val array = MainActivity.persons
-        val rnds = (0..peronsNumber - 1).random()  //make random number
+        val rnds = (0 until peronsNumber).random()  //make random number
         val person = array!![rnds]
         val image = findViewById<ImageView>(novak.project.R.id.imageView)
-        val path = File(person.picture, person.uid.toString() + ".png")
+        val path = File(person.picture)
         val bitmap: Bitmap = BitmapFactory.decodeStream(FileInputStream(path))
         image.setImageBitmap(bitmap)
         val namelocal = person.name.toLowerCase()
@@ -63,6 +60,7 @@ class QuizzActivity : Activity() {
     }
 
 
+    @Suppress("UNUSED_PARAMETER")
     fun finishActivity(v: View) {
         //finish()
         val intent = Intent(this, MainActivity::class.java)

@@ -5,21 +5,18 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.Path
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_add.*
 import novak.project.controller.AsyncTasks.addPerson
-import novak.project.controller.AsyncTasks.getNextId
 import novak.project.controller.AsyncTasks.getPersons
 import novak.project.model.Person
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.lang.Exception
-import kotlin.random.Random
+import java.util.*
 
 
 class AddActivity : Activity() {
@@ -31,6 +28,7 @@ class AddActivity : Activity() {
         imgPerson.setImageResource(novak.project.R.drawable.noavatar)
     }
 
+    @Suppress("UNUSED_PARAMETER")
     fun onClickBack(v: View){
         val intent = Intent(this,GalleryActivity::class.java).apply {
         }
@@ -39,7 +37,7 @@ class AddActivity : Activity() {
 
     fun onClickAdd(v: View){
         if (photo != null){
-            val path: String = saveImage(photo!!,getNextId(this).execute().get())
+            val path: String = saveImage(photo!!)
             val person = Person(null,editName.text.toString(),editSurname.text.toString(),path)
             addPerson(this,person).execute()
             Toast.makeText(this,"Person added",Toast.LENGTH_SHORT).show()
@@ -63,10 +61,10 @@ class AddActivity : Activity() {
         imgPerson.setImageBitmap(this.photo)
     }
 
-    fun saveImage(bitmap: Bitmap, uid: Int): String{
-        val contextWrapper: ContextWrapper = ContextWrapper(applicationContext)
-        val dir: File = contextWrapper.getDir("photos",Context.MODE_PRIVATE)
-        var path = File(dir, ("${uid+1}.png"))
+    fun saveImage(bitmap: Bitmap): String {
+        val timeStamp: String = ("yyyyMMdd_HHmmss").format(Date())
+        val dir: File = ContextWrapper(applicationContext).getDir("photos", Context.MODE_PRIVATE)
+        val path = File(dir, ("$timeStamp.png"))
         var fos: FileOutputStream? = null
         try {
             fos = FileOutputStream(path)
@@ -80,7 +78,7 @@ class AddActivity : Activity() {
                 e.printStackTrace()
             }
         }
-        return dir.absolutePath
+        return path.absolutePath
     }
 
 }
