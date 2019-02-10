@@ -11,16 +11,15 @@ import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_add.*
 import novak.project.controller.AsyncTasks.addPerson
-import novak.project.controller.AsyncTasks.getPersons
 import novak.project.model.Person
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.util.*
+import java.time.Instant
 
 
 class AddActivity : Activity() {
-    var photo: Bitmap? =null
+    var photo: Bitmap? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,28 +28,28 @@ class AddActivity : Activity() {
     }
 
     @Suppress("UNUSED_PARAMETER")
-    fun onClickBack(v: View){
-        val intent = Intent(this,GalleryActivity::class.java).apply {
+    fun onClickBack(v: View) {
+        val intent = Intent(this, GalleryActivity::class.java).apply {
         }
         startActivity(intent)
     }
 
-    fun onClickAdd(v: View){
-        if (photo != null){
+    @Suppress("UNUSED_PARAMETER")
+    fun onClickAdd(v: View) {
+        if (photo != null) {
             val path: String = saveImage(photo!!)
-            val person = Person(null,editName.text.toString(),editSurname.text.toString(),path)
-            addPerson(this,person).execute()
-            Toast.makeText(this,"Person added",Toast.LENGTH_SHORT).show()
-            MainActivity.persons = getPersons(this).execute().get()
+            val person = Person(null, editName.text.toString(), editSurname.text.toString(), path)
+            addPerson(this, person).execute()
+            Toast.makeText(this, "Person added", Toast.LENGTH_SHORT).show()
             finish()
         } else {
-            Toast.makeText(this,"No photo added",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "No photo added", Toast.LENGTH_SHORT).show()
         }
 
     }
 
     @Suppress("UNUSED_PARAMETER")
-    fun onClickPhoto(v: View){
+    fun onClickPhoto(v: View) {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         startActivityForResult(intent, 0)
     }
@@ -62,19 +61,19 @@ class AddActivity : Activity() {
     }
 
     fun saveImage(bitmap: Bitmap): String {
-        val timeStamp: String = ("yyyyMMdd_HHmmss").format(Date())
+        val timeStamp: String = Instant.now().toString()
         val dir: File = ContextWrapper(applicationContext).getDir("photos", Context.MODE_PRIVATE)
         val path = File(dir, ("$timeStamp.png"))
         var fos: FileOutputStream? = null
         try {
             fos = FileOutputStream(path)
-            bitmap.compress(Bitmap.CompressFormat.PNG,100,fos)
-        } catch (e: Exception){
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos)
+        } catch (e: Exception) {
             e.printStackTrace()
         } finally {
             try {
                 fos?.close()
-            } catch (e: IOException){
+            } catch (e: IOException) {
                 e.printStackTrace()
             }
         }

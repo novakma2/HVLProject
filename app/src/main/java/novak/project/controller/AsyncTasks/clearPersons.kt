@@ -2,8 +2,8 @@ package novak.project.controller.AsyncTasks
 
 import android.app.Activity
 import android.os.AsyncTask
+import novak.project.DataAccess
 import novak.project.controller.Dao
-import novak.project.view.MainActivity
 
 
 /**
@@ -13,7 +13,7 @@ import novak.project.view.MainActivity
 class clearPersons(private val weakActivity: Activity) : AsyncTask<Void, Void, Void>() {
 
     override fun doInBackground(vararg params: Void?): Void? {
-        val dao: Dao = MainActivity.db!!.personsDao()
+        val dao: Dao = DataAccess.provideDAO(weakActivity)
         dao.clearTable()
         return null
     }

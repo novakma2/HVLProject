@@ -37,6 +37,12 @@ class RecViewAdapter(var persons: Array<Person>, val context: Context) : Adapter
                     android.R.string.yes
                 ) { _, _ ->
                     persons = persons.filterIndexed { index, _ -> index != i }.toTypedArray()
+
+                    val file = File(person.picture)
+                    if (!file.delete()) {
+                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+                        return@setPositiveButton
+                    }
                     removePerson(context as Activity, person).execute()
                     notifyItemRemoved(customViewHolder.adapterPosition)
                     notifyItemRangeChanged(customViewHolder.adapterPosition, persons.count())
@@ -55,7 +61,7 @@ class RecViewAdapter(var persons: Array<Person>, val context: Context) : Adapter
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): CustomViewHolder {
-        val view = LayoutInflater.from(viewGroup.context).inflate(novak.project.R.layout.card,viewGroup,false)
+        val view = LayoutInflater.from(viewGroup.context).inflate(novak.project.R.layout.card, viewGroup, false)
         return CustomViewHolder(view)
     }
 

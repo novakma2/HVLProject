@@ -2,9 +2,9 @@ package novak.project.controller.AsyncTasks
 
 import android.app.Activity
 import android.os.AsyncTask
+import novak.project.DataAccess
 import novak.project.controller.Dao
 import novak.project.model.Person
-import novak.project.view.MainActivity
 
 /**
  * Used to get Array of Person type, obtaining all persons in database
@@ -14,7 +14,7 @@ import novak.project.view.MainActivity
 class getPersons(private val weakActivity: Activity) : AsyncTask<Void, Void, Array<Person>>() {
 
     override fun doInBackground(vararg params: Void?): Array<Person> {
-        val dao: Dao = MainActivity.db!!.personsDao()
+        val dao: Dao = DataAccess.provideDAO(weakActivity)
         return dao.getPersons()
     }
 }

@@ -10,9 +10,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
+import novak.project.DataAccess
 import novak.project.R
 import novak.project.controller.Dao
 import novak.project.controller.RecViewAdapter
+import novak.project.model.Person
+import java.lang.Thread.sleep
 
 
 class GalleryActivity : Activity() {
@@ -54,7 +57,7 @@ class GalleryActivity : Activity() {
         private val layoutManager: LinearLayoutManager,
         private val context: Context
     ) : AsyncTask<Void, Void, Int>() {
-
+        private var persons: Array<Person> = emptyArray()
 
         override fun onPreExecute() {
             progressBar.visibility = View.VISIBLE
@@ -63,9 +66,9 @@ class GalleryActivity : Activity() {
         override fun doInBackground(vararg params: Void?): Int? {
             var result: Int?
             try {
-                //sleep(5000)
-                val dao: Dao = MainActivity.db!!.personsDao()
-                MainActivity.persons = dao.getPersons()
+                sleep(1000)
+                val dao: Dao = DataAccess.provideDAO(context)
+                persons = dao.getPersons()
                 result = 1
             } catch (e: Exception) {
                 result = 0
@@ -77,7 +80,7 @@ class GalleryActivity : Activity() {
             progressBar.visibility = View.GONE
             if (result == 1) {
                 recyclerView.layoutManager = layoutManager
-                recyclerView.adapter = RecViewAdapter(MainActivity.persons!!, context)
+                recyclerView.adapter = RecViewAdapter(persons, context)
             } else {
                 Toast.makeText(context, "Error loading data", Toast.LENGTH_SHORT).show()
             }

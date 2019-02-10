@@ -1,6 +1,5 @@
 package novak.project
 
-import android.app.PendingIntent.getActivity
 import android.support.test.espresso.Espresso
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.action.ViewActions.click
@@ -9,13 +8,9 @@ import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.rule.ActivityTestRule
 import android.widget.TextView
 import junit.framework.Assert.assertEquals
-import novak.project.view.AddActivity
-import novak.project.view.MainActivity
 import novak.project.view.QuizzActivity
-
-import org.junit.Test
-
 import org.junit.Rule
+import org.junit.Test
 
 class QuizzActivityTest {
 
@@ -33,8 +28,8 @@ class QuizzActivityTest {
     fun scoreIncrement() {
 
 
-        print(onView(withId(R.id.textView2)).toString())
-        onView(withId(R.id.textView2)).perform(typeText("florian"))
+        print(onView(withId(R.id.textView)).toString())
+        onView(withId(R.id.textView)).perform(typeText("florian"))
         Espresso.closeSoftKeyboard()
         onView(withId(R.id.check)).perform(click())
 

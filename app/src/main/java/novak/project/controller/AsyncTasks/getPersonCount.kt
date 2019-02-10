@@ -2,9 +2,8 @@ package novak.project.controller.AsyncTasks
 
 import android.app.Activity
 import android.os.AsyncTask
-import novak.project.view.MainActivity
+import novak.project.DataAccess
 import novak.project.controller.Dao
-import novak.project.view.QuizzActivity
 
 /**
  * Used to get count of persons in database
@@ -14,7 +13,7 @@ import novak.project.view.QuizzActivity
  class getPersonCount(private val weakActivity: Activity) : AsyncTask<Void, Void, Int>() {
 
     override fun doInBackground(vararg params: Void?): Int {
-        val dao: Dao = MainActivity.db!!.personsDao()
+        val dao: Dao = DataAccess.provideDAO(weakActivity)
         return dao.countPersons()
     }
 }
