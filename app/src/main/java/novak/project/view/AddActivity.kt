@@ -44,6 +44,10 @@ class AddActivity : Activity() {
             finish()
         } else {
             Toast.makeText(this, "No photo added", Toast.LENGTH_SHORT).show()
+            val path: String = saveImage(photo!!)
+            val person = Person(null, editName.text.toString(), editSurname.text.toString(), path)
+            addPerson(this, person).execute()
+            finish()
         }
 
     }
