@@ -52,7 +52,9 @@ class AddActivityTest(){
 
         assertEquals(personsNumberBefore+1,personsNumberAfter)
 
-        //add removing test person
+        val personsNew = getPersons(activityTestRule.activity).execute().get()
+        removePerson(activityTestRule.activity,personsNew[personsNew.size-1] ).execute()
+
 
 
     }
